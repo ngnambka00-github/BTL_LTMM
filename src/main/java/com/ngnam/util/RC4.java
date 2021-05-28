@@ -10,10 +10,10 @@ import java.io.IOException;
 public class RC4 {
 
     public static byte[] encrypt(BufferedImage bufferImage, String typeOfImage, int[] key) {
+        // Lấy kích thước của ảnh
         int width = bufferImage.getWidth();
         int height = bufferImage.getHeight();
         int lengthKey = key.length;
-
 
         // Thực hiện mã hóa
         // Giai đoạn khởi tạo
@@ -38,49 +38,41 @@ public class RC4 {
         i = 0; j = 0;
         for (int i0 = 0; i0 < width; i0++) {
             for (int i1 = 0; i1 < height; i1++) {
-                int t = 0, k = 0, temp = 0;
+
+                // Lấy giá trị điểm ảnh tại tọa độ (i0, i1)
                 Color c = new Color(bufferImage.getRGB(i0, i1), true);
+
+                int[] k = new int[3];
+                int t = 0, temp = 0;
+                for (int count = 0; count < 3; count++) {
+                    i = (i + 1) % 256;
+                    j = (j + S[i]) % 256;
+                    // Thực hiện hoán vị S[i] và S[j]
+                    temp = S[i];
+                    S[i] = S[j];
+                    S[j] = temp;
+                    t = (S[i] + S[j]) % 256;
+                    k[count] = S[t];
+                }
 
                 // Với màu red
                 int red = c.getRed();
-                i = (i + 1) % 256;
-                j = (j + S[i]) % 256;
-                // Thực hiện hoán vị S[i] và S[j]
-                temp = S[i];
-                S[i] = S[j];
-                S[j] = temp;
-                t = (S[i] + S[j]) % 256;
-                k = S[t];
-                red = red ^ k;
+                red = red ^ k[0];
 
                 // Với màu green
                 int green = c.getGreen();
-                i = (i + 1) % 256;
-                j = (j + S[i]) % 256;
-                // Thực hiện hoán vị S[i] và S[j]
-                temp = S[i];
-                S[i] = S[j];
-                S[j] = temp;
-                t = (S[i] + S[j]) % 256;
-                k = S[t];
-                green = green ^ k;
+                green = green ^ k[1];
 
                 // Với màu blue
                 int blue = c.getBlue();
-                i = (i + 1) % 256;
-                j = (j + S[i]) % 256;
-                // Thực hiện hoán vị S[i] và S[j]
-                temp = S[i];
-                S[i] = S[j];
-                S[j] = temp;
-                t = (S[i] + S[j]) % 256;
-                k = S[t];
-                blue = blue ^ k;
+                blue = blue ^ k[2];
 
+                // Cập nhập lại điểm ảnh
                 bufferImage.setRGB(i0, i1, new Color(red, green, blue).getRGB());
             }
         }
 
+        // Chuyển BufferImage -> mảng byte
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             ImageIO.write(bufferImage, typeOfImage, baos);

@@ -28,10 +28,11 @@ public class APIController {
     @GetMapping(path="/getplains/{photo}")
     public ResponseEntity<ByteArrayResource> getPlainImage(
             @PathVariable("photo") String photo) {
-        // Lấy định dạng của ảnh
+        // Lấy định dạng của ảnh .JPG, .PNG
         String[] typeOfImage = photo.split("\\.");
         String contentType = "image/" + typeOfImage[1];
 
+        // Nếu ảnh không rỗng thì thực hiện code, còn lại thì trả về null
         if (!photo.isEmpty() || photo != null) {
             try {
                 Path fileName = Paths.get("uploads/", photo);
@@ -42,7 +43,6 @@ public class APIController {
                         .contentLength(buffer.length)
                         .contentType(MediaType.parseMediaType(contentType))
                         .body(byteArrayResource);
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -50,22 +50,24 @@ public class APIController {
         return ResponseEntity.badRequest().build();
     }
 
-    // API lấy hình ảnh từ server trả về cho giao diện
+    // API lấy ảnh từ Server thực hiện mã hóa ảnh rồi trả về giao diện
     @GetMapping(path="/getciphers/{photo}/{key}")
     public ResponseEntity<ByteArrayResource> getCipherImage(
             @PathVariable("photo") String photo,
             @PathVariable("key") String key) {
-        // Tách key từ chuỗi
+
+        // Tách key từ chuỗi input đầu vào
         String[] keyStr = key.split("\\s+");
         int[] keyArr = new int[keyStr.length];
         for (int i = 0; i < keyStr.length; i++) {
             keyArr[i] = Integer.parseInt(keyStr[i]);
         }
 
-        // Lấy định dạng của ảnh
+        // Lấy định dạng của ảnh .JPG, .PNG
         String[] typeOfImage = photo.split("\\.");
         String contentType = "image/" + typeOfImage[1];
 
+        // Lấy ảnh không rỗng thì thực hiện mã hóa
         if (!photo.isEmpty() || photo != null) {
             try {
                 Path fileName = Paths.get("uploads/", photo);
@@ -80,6 +82,7 @@ public class APIController {
                     throw new RuntimeException(e);
                 }
 
+                // Thực hiện mã hóa RC4 cho từng điểm ảnh
                 buffer = RC4.encrypt(bufferImage, typeOfImage[1], keyArr);
 
                 ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
