@@ -1,6 +1,5 @@
 package com.ngnam.util;
 
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -9,7 +8,7 @@ import java.io.IOException;
 
 public class RC4 {
 
-    public static byte[] encrypt(BufferedImage bufferImage, String typeOfImage, int[] key) {
+    public static byte[] encrypt(BufferedImage bufferImage, int[] key) {
         // Lấy kích thước của ảnh
         int width = bufferImage.getWidth();
         int height = bufferImage.getHeight();
@@ -75,7 +74,7 @@ public class RC4 {
         // Chuyển BufferImage -> mảng byte
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            ImageIO.write(bufferImage, typeOfImage, baos);
+            ImageIO.write(bufferImage, "png", baos);
         } catch (IOException e) {
             e.printStackTrace();
         }
