@@ -63,9 +63,8 @@ public class APIController {
             keyArr[i] = Integer.parseInt(keyStr[i]);
         }
 
-        // Lấy định dạng của ảnh .JPG, .PNG
-        String[] typeOfImage = photo.split("\\.");
-        String contentType = "image/" + typeOfImage[1];
+        // Lấy định dạng của ảnh .PNG
+        String contentType = "image/png";
 
         // Lấy ảnh không rỗng thì thực hiện mã hóa
         if (!photo.isEmpty() || photo != null) {
@@ -83,14 +82,13 @@ public class APIController {
                 }
 
                 // Thực hiện mã hóa RC4 cho từng điểm ảnh
-                buffer = RC4.encrypt(bufferImage, typeOfImage[1], keyArr);
+                buffer = RC4.encrypt(bufferImage, keyArr);
 
                 ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
                 return ResponseEntity.ok()
                         .contentLength(buffer.length)
                         .contentType(MediaType.parseMediaType(contentType))
                         .body(byteArrayResource);
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

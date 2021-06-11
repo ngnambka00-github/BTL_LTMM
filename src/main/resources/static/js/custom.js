@@ -69,6 +69,18 @@ $(document).ready(function() {
                 `${fileName}`);
         }
     });
+
+    $('#btn-random-key').on('click', function() {
+        let soLuong = Math.floor(Math.random() * 100) + 1;
+
+        let list = [];
+        for (let i = 0; i < soLuong; i++) {
+            list.push(Math.floor(Math.random() * 255) + 1);
+        }
+
+        let keyStr = list.join(' ');
+        $('#id-key').val(keyStr);
+    });
 });
 
 // Call API to upload file image to server
