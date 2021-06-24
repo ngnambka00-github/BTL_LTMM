@@ -10,8 +10,7 @@
 		+ Đường dẫn phiên bản JDK 11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
 		+ Do server Tomcat đã được tích hợp sắn trong framework Spring Boot, nên không cần cài đặt thêm server khác.
 - Cách sử dụng: 
-	+ B1: Download Project từ đường dẫn https://github.com/ngnambka00-github/BTL_LTMM 
-		
+	+ B1: Download Project từ đường dẫn https://github.com/ngnambka00-github/BTL_LTMM <br/>
 		Hoặc tạo folder trống trên máy với công cụ Git Command và gõ lệnh sau: git clone https://github.com/ngnambka00-github/BTL_LTMM.git
 	+ B2: Mở phần mềm bằng công cụ IntelliJ (như ở phần trên đã trình bày)
 	+ B3: Chạy "Run" trên phần mềm
