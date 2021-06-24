@@ -15,6 +15,6 @@
 	=> Cách đối port khác: 
 		+ Từ đường dẫn gốc Project tìm đếm : ../BTL_LTMM/src/main/resources/application.properties
 		+ Thay đổi bằng lệnh: server.port= <port mới>
-		+ Tiến hành mở lại trên trình duyệt bằng URL: http://localhost:<port mới>/BTL_LTMM
+		+ Tiến hành mở lại trên trình duyệt bằng URL: "http://localhost:<port mới>/BTL_LTMM"
 
 
