@@ -5,6 +5,10 @@
 	+ Backend API: Java Framework Spring Boot
 	+ Frontend: HTML, CSS, Javascript
 	+ Phần mềm sử dụng: IntelliJ IDEA JetBrains 2021.1.2 (Phiên bản Java sử dụng cho project là JDK 8 hoặc JDK 11 để thỏa mãn là sử dụng ổn định)
+		+ Đường dẫn phần mềm: https://www.jetbrains.com/idea/download/#section=windows
+		+ Đường dẫn phiên bản JDK 8: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+		+ Đường dẫn phiên bản JDK 11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
+		+ Do server Tomcat đã được tích hợp sắn trong framework Spring Boot, nên không cần cài đặt thêm server khác.
 - Cách sử dụng: 
 	+ B1: Download Project từ đường dẫn https://github.com/ngnambka00-github/BTL_LTMM 
 		Hoặc tạo folder trống trên máy với công cụ Git Command và gõ lệnh sau: git clone https://github.com/ngnambka00-github/BTL_LTMM.git
