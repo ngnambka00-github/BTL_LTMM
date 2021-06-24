@@ -4,7 +4,7 @@
 - Công cụ sử dụng: 
 	+ Backend API: Java Framework Spring Boot
 	+ Frontend: HTML, CSS, Javascript
-	+ Phần mềm sử dụng: IntelliJ IDEA JetBrains 2021.1.2 (Phiên bản Java sử dụng cho project là JDK 8 hoặc JDK 11 để thỏa mãn là sử dụng ổn định)
+	+ Phần mềm sử dụng: IntelliJ IDEA JetBrains 2021.1.2 (Phiên bản Java sử dụng cho Project là JDK 8 hoặc JDK 11 đểu thỏa mãn là sử dụng ổn định)
 		+ Đường dẫn phần mềm: https://www.jetbrains.com/idea/download/#section=windows
 		+ Đường dẫn phiên bản JDK 8: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 		+ Đường dẫn phiên bản JDK 11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
